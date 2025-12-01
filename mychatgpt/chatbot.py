@@ -27,8 +27,9 @@ import streamlit as st  # Streamlit for creating the web UI for the chatbot
    # model_kwargs={"max_tokens_to_sample": 1000, "temperature": 0.9}  # Custom settings for the model
 #)
 
+temperature= st.number_input(label="Temperature",step=.1,format="%.2f", value=0.7)
 
-llm = ChatGroq(
+llm = ChatGroq(temperature = temperature,
             groq_api_key=groq_api_key,
             model_name='llama-3.1-8b-instant'
     )
