@@ -4,27 +4,34 @@
 
 # Import required libraries
 from langchain.chains import LLMChain  # Importing LLMChain for chaining language models with a prompt
-from langchain.llms.bedrock import Bedrock  # Importing the Bedrock model from LangChain
+#from langchain.llms.bedrock import Bedrock  # Importing the Bedrock model from LangChain
 from langchain.prompts import PromptTemplate  # Importing PromptTemplate to define templates for prompts
 import boto3  # AWS SDK to interact with AWS services
 import os  # For working with environment variables
+from langchain_groq import ChatGroq
 import streamlit as st  # Streamlit for creating the web UI for the chatbot
 
 # Initialize Bedrock client using Boto3 to interact with AWS services
-bedrock_client = boto3.client(
-    service_name="bedrock-runtime",  # This is to access AWS Bedrock API
-    region_name="us-east-1"  # The region where the service is available
-)
+#bedrock_client = boto3.client(
+ #   service_name="bedrock-runtime",  # This is to access AWS Bedrock API
+ #   region_name="us-east-1"  # The region where the service is available
+#)
 
 # Specify the model ID to be used for chatbot responses (e.g., Claude-v2)
-modelID = "anthropic.claude-v2"
+#modelID = "anthropic.claude-v2"
 
 # Initialize the Bedrock model with the specified model ID and client configuration
-llm = Bedrock(
-    model_id=modelID,  # The model you want to use (Claude-v2 in this case)
-    client=bedrock_client,  # The Bedrock client to interact with the AWS API
-    model_kwargs={"max_tokens_to_sample": 1000, "temperature": 0.9}  # Custom settings for the model
-)
+#llm = Bedrock(
+ #   model_id=modelID,  # The model you want to use (Claude-v2 in this case)
+  #  client=bedrock_client,  # The Bedrock client to interact with the AWS API
+   # model_kwargs={"max_tokens_to_sample": 1000, "temperature": 0.9}  # Custom settings for the model
+#)
+
+
+llm = ChatGroq(
+            groq_api_key=groq_api_key,
+            model_name='mixtral-8x7b-32768'
+    )
 
 # Define the function to create a chatbot interaction
 def my_chatbot(language, freeform_text):
@@ -47,7 +54,7 @@ def my_chatbot(language, freeform_text):
 st.title("My ChatGPT")  # Setting the title of the web application
 
 # Create a language selector (dropdown) in the sidebar
-language = st.sidebar.selectbox("Language", ["english", "spanish"])  # Dropdown for selecting the language
+language = st.sidebar.selectbox("Language", ["english", "hebrew"])  # Dropdown for selecting the language
 
 # If a language is selected, ask for a freeform text input
 if language:
