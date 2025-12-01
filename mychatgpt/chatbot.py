@@ -30,7 +30,7 @@ import streamlit as st  # Streamlit for creating the web UI for the chatbot
 
 llm = ChatGroq(
             groq_api_key=groq_api_key,
-            model_name='mixtral-8x7b-32768'
+            model_name='llama-3.1-8b-instant'
     )
 
 # Define the function to create a chatbot interaction
