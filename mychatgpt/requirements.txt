@@ -1,9 +1,4 @@
 boto3
-langchain
-langchain
-pydantic==1.8
-pydantic_core==2.0.0
-# Add other dependencies as needed
 langchain_community
 pypdf
 pypdf2
