@@ -3,9 +3,9 @@
 # # pip install -r requirements.txt 
 
 # Import required libraries
-from langchain.chains import LLMChain  # Importing LLMChain for chaining language models with a prompt
-#from langchain.llms.bedrock import Bedrock  # Importing the Bedrock model from LangChain
-from langchain.prompts import PromptTemplate  # Importing PromptTemplate to define templates for prompts
+from langchain_classic.chains import LLMChain  # Importing LLMChain for chaining language models with a prompt
+#from langchain_classic.llms.bedrock import Bedrock  # Importing the Bedrock model from LangChain
+from langchain_classic.prompts import PromptTemplate  # Importing PromptTemplate to define templates for prompts
 import boto3  # AWS SDK to interact with AWS services
 import os  # For working with environment variables
 from langchain_groq import ChatGroq
